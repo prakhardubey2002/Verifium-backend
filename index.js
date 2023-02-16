@@ -2,7 +2,7 @@ const { Router } = require("express");
 const express = require("express");
 const app = express();
 const port = 3000;
-const programmingLanguagesRouter = require('./routes/programmingLanguages');
+// const programmingLanguagesRouter = require('./routes/programmingLanguages');
 const aliLangRouter = require('./routes/ali');
 app.use(express.json());//built-in Express JSON parser middleware to parse JSON 
 app.use(
@@ -14,7 +14,8 @@ app.get("/",(req,res)=>{
     res.json({message:"ok"});
 })
 
-app.use("/ali",aliLangRouter)
+app.use("/ali",aliLangRouter);
+
 app.use((err,req,res,next)=>{
     const statusCode= err.statusCode || 500;
     console.error(err.message,err.stack);

@@ -1,20 +1,30 @@
 const express = require('express');
 const router = express.Router();
-const programmingLanguages = require('../services/aliLang');
+const ali = require('../services/aliLang');
 router.get('/', async function (req, res, next) {
     try {
-        res.json(await programmingLanguages.getMultiple(req.query.programmingLanguages))
+        res.json(await ali.getMultiple(req.query.ali))
     } catch (err) {
-        console.error(`Error`, err.message);
+        console.error(`Error while showing address`, err.message);
         next(err);
     }
 });
-router.post('/create', async function (req, res, next) {
+router.post('/createwallet', async function (req, res, next) {
     try {
-        res.json(await programmingLanguages.create(req.body));
+        res.json(await ali.create(req.body));
+        console.log("wallet address added")
     } catch (err) {
-        console.error(`Error while creating programming language`, err.message);
+        console.error(`Error while creating address`, err.message);
         next(err);
     }
 });
+router.delete('/:name', async function(req,res,next){
+    try{
+        res.json(await ali.deletewallet(req.params.name));
+        console.log("deleted address");
+    } catch (err){
+        console.log("Error",err.message)
+        next(err);
+    }
+})
 module.exports = router;
