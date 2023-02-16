@@ -18,12 +18,12 @@ async function create(data) {
     const result = await db.query(
         `INSERT INTO wallet (address) 
       VALUES 
-      ("${data.address}")`
+      ("${data.isAddress}")`
     );
-    let message = `Error in creating Wallet address for ${data.address} `;
+    let message = `Error in creating Wallet address for ${data.isAddress} `;
 
   if (result.affectedRows) {
-    message = `Wallet address created successfully for ${data.address}`;
+    message = `Wallet address created successfully for ${data.isAddress}`;
   }
 
   return {message};

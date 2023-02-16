@@ -1,9 +1,11 @@
-const { Router } = require("express");
+// const { Router } = require("express");
+const cors = require('cors');
 const express = require("express");
 const app = express();
 const port = 3000;
 // const programmingLanguagesRouter = require('./routes/programmingLanguages');
 const aliLangRouter = require('./routes/ali');
+app.use(cors());
 app.use(express.json());//built-in Express JSON parser middleware to parse JSON 
 app.use(
     express.urlencoded({
