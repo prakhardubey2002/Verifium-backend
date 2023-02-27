@@ -41,8 +41,24 @@ async function deletewallet(address){
   
     return {message};
 }
+async function  adddata(data) {
+  //use Json format in postman or else data will be undefined
+  const result = await db.query(
+      `INSERT INTO feedback_table  (name, institute_name, course_specialisation, feedback) 
+    VALUES 
+    ("${data.name}","${data.institute_name}","${data.course_specialisation}","${data.feedback}")`
+  );
+  let message = `Error in creating data ${data.name}`;
+
+if (result.affectedRows) {
+  message = `data created successfully for ${data.name}`;
+}
+
+return {message};
+}
 module.exports = {
     getMultiple,
     create,
-    deletewallet
+    deletewallet,
+    adddata,
 }

@@ -18,6 +18,16 @@ router.post('/createwallet', async function (req, res, next) {
         next(err);
     }
 });
+router.post('/addData', async function (req, res, next) {
+    try {
+        res.json(await ali.adddata(req.body));
+        console.log("User Data added")
+    } catch (err) {
+        console.error(`Error while added data`, err.message);
+        next(err);
+    }
+});
+
 router.delete('/:name', async function(req,res,next){
     try{
         res.json(await ali.deletewallet(req.params.name));
