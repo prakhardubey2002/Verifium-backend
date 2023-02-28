@@ -46,12 +46,12 @@ async function  adddata(data) {
   const result = await db.query(
       `INSERT INTO feedback_table  (name, institute_name, course_specialisation, feedback) 
     VALUES 
-    ("${data.name}","${data.institute_name}","${data.course_specialisation}","${data.feedback}")`
+    ("${data.Name}","${data.insitutename}","${data.course}","${data.feedback}")`
   );
-  let message = `Error in creating data ${data.name}`;
+  let message = `Error in creating data ${data.Name}`;
 
 if (result.affectedRows) {
-  message = `data created successfully for ${data.name}`;
+  message = `Data Added successfully Welcome ${data.Name}`;
 }
 
 return {message};
