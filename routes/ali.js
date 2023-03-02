@@ -27,7 +27,14 @@ router.post('/addData', async function (req, res, next) {
         next(err);
     }
 });
-
+router.get('/UserDataView',async function (req,res,next){
+    try{
+        res.json(await ali.Show(req.query.ali))
+    }catch(err){
+        console.error(`Error while showing Data`,err.message);
+        next(err);
+    }
+})
 router.delete('/:name', async function(req,res,next){
     try{
         res.json(await ali.deletewallet(req.params.name));

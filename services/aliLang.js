@@ -56,9 +56,23 @@ if (result.affectedRows) {
 
 return {message};
 }
+async function Show(page = 1) {//1 will only render 1-10 in list 2 will render from 10-20
+  const offset = helper.getOffset(page, config.listPerPage);
+  const rows = await db.query(
+      `SELECT * FROM feedback_table `
+  );
+  const data = helper.emptyOrRows(rows);
+  // const meta = { page };
+
+  return {
+      data,
+      // meta
+  }
+}
 module.exports = {
     getMultiple,
     create,
     deletewallet,
     adddata,
+    Show,
 }
