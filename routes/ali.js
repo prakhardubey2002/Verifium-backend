@@ -9,6 +9,24 @@ router.get('/', async function (req, res, next) {
         next(err);
     }
 });
+router.get('/feedbacklist', async function (req, res, next) {
+    try {
+        res.json(await ali.xShowfeedback(req.query.ali))
+    } catch (err) {
+        console.error(`Error while feedback`, err.message);
+        next(err);
+    }
+});
+
+router.post('/createfeedback', async function (req,res,next){
+    try{
+        res.json(await ali.createfeedback(req.body));
+        console.log("Feedback created succesfully");
+    }catch(err){
+        console.error(`Error while creating message ${err.message}`);
+        next(err);
+    }
+})
 router.post('/createwallet', async function (req, res, next) {
     try {
         res.json(await ali.create(req.body));
