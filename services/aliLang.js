@@ -95,6 +95,20 @@ async function xShowfeedback(page = 1) {//1 will only render 1-10 in list 2 will
     // meta
   }
 }
+async function addNftData(data){
+  const result = await db.query(
+    `INSERT INTO certificates (id, name, institute, course, certificate, certificate_id)
+    VALUES ("${data.id}", "${data.Name}", "${data.insitutename}", "${data.course}", "${data.cert}", "${data.certid}");
+    `
+  )
+  let message = `Error in addying feedback for ${data.Name}`;
+
+  if (result.affectedRows) {
+    message = `Feedback added succesfully for ${data.Name}`;
+  }
+
+  return { message };
+}
 module.exports = {
   getMultiple,
   create,
@@ -102,5 +116,6 @@ module.exports = {
   adddata,
   Show,
   createfeedback,
-  xShowfeedback
+  xShowfeedback,
+  addNftData
 }

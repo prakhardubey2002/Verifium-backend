@@ -27,6 +27,15 @@ router.post('/createfeedback', async function (req,res,next){
         next(err);
     }
 })
+router.post('/addNftData', async function (req,res,next){
+    try{
+        res.json(await ali.addNftData(req.body));
+        console.log("NftData created succesfully");
+    }catch(err){
+        console.error(`Error while creating message :  ${err.message}`);
+        next(err);
+    }
+})
 router.post('/createwallet', async function (req, res, next) {
     try {
         res.json(await ali.create(req.body));
