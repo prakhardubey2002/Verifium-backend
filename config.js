@@ -6,9 +6,9 @@ const config = {
       // database: "tester",
       // port:"3306"
       host: "db4free.net",
-      user: "testerprx",
+      user: "testernpx",
       password: "12345678",
-      database: "tester",
+      database: "testernpx",
     },
     listPerPage: 20,
   };
